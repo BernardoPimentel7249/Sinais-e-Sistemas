@@ -1,4 +1,4 @@
-# 📘 SINAIS E SISTEMAS EM TEMPO CONTÍNUO
+# 📡 SINAIS E SISTEMAS EM TEMPO CONTÍNUO
 
 ## 📖 Descrição
 O conteúdo neste repositório foi produzido como material de apoio para os alunos da cadeira **ENE0067 - SINAIS E SISTEMAS EM TEMPO CONTÍNUO** na Universidade de Brasília, da turma do professor **Eduardo Stockler Tognetti**.  
