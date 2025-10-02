@@ -3,7 +3,7 @@
 ## 📖 Descrição
 O conteúdo neste repositório foi produzido como material de apoio para os alunos da cadeira **ENE0067 - SINAIS E SISTEMAS EM TEMPO CONTÍNUO** na Universidade de Brasília, da turma do professor **Eduardo Stockler Tognetti**.  
 
-Contudo, os tópicos abordados nos notebooks disponíveis são abrangentes o suficiente para que possam ser aproveitados por qualquer estudante dessa disciplina. Adotando o livro *Sinais e Sistemas Lineares* do autor **Bhagwandas Pannalal Lathi**, assim como as notas de aula do professor Eduardo Tognetti como referências principais, o objetivo dos arquivos principais é fornecer:  
+Contudo, os tópicos abordados nos notebooks disponíveis são abrangentes o suficiente para que possam ser aproveitados por qualquer estudante dessa disciplina. Adotando o livro *Sinais e Sistemas Lineares* do autor **Bhagwandas Pannalal Lathi**, assim como as notas de aula do professor Eduardo Tognetti como referências principais, o objetivo dos arquivos é fornecer:  
 
 - Uma visão geral teórica dos conceitos principais abordados  
 - Células interativas que sirvam para resolver problemas relacionados ao assunto discutido  
