@@ -59,7 +59,7 @@
         <p style="text-indent: 2em;">
         É estudado:
         <ul>
-            <li>As vantagens da transformada de Laplace sobre a de Fourier</li>
+            <li>As vantagens da transformada de Laplace sobre a de Fourier na análise de sistemas LCIT</li>
             <li>A região de convergência</li>
             <li>EDOs como equações algébricas</li>
             <li>Funções de Transferência</li>
