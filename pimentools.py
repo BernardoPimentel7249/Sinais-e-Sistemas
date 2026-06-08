@@ -377,7 +377,6 @@ def plota_espectros_t(x, T, w_c, t, w):
     axs[2].plot(w_i, fase)
     axs[2].set_ylabel(r"$∠H(\omega)$", rotation=1)
     axs[2].set_title("Espectro de Fase")
-    axs[2].set_xticklabels([])
 
     for i in range(3):
         axs[i].grid(True)
