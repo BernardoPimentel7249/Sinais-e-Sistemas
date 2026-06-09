@@ -12,7 +12,7 @@
         <p style="text-indent: 2em;">
         Contudo, os tópicos abordados nos notebooks disponíveis são abrangentes o suficiente para que possam ser aproveitados por qualquer estudante dessa disciplina. Adotando o livro <i>Sinais e Sistemas Lineares</i> do autor <b>Bhagwandas Pannalal Lathi</b>, assim como as notas de aula do professor Eduardo Tognetti como referências principais, o objetivo dos arquivos é fornecer:
     <ul>
-        <li>Uma visão teórica <b>sucinta</b> dos conceitos principais cobertos no curso de SSTC</li>
+        <li>Uma visão teórica <b>sucinta</b> dos conceitos principais vistos no curso de SSTC</li>
         <li>Células interativas que sirvam para resolver problemas e ilustrar ideias relacionados ao assunto discutido</li>
     </ul>
     <h2>
@@ -21,7 +21,7 @@
     <p style="text-indent: 2em;">
         Apresenta-se o conceito de resolução de <b>sistemas lineares diferenciais</b>, sob a ótica da <b>resposta de entrada nula</b> e da <b>resposta de estado nulo</b>.
     <p style="text-indent: 2em;">
-        Nesse contexto, são abordados:
+        Nesse contexto, é tratado:
         <ul>
             <li>O delta de Dirac e a função de resposta ao impulso</li>
             <li>O sistema elementar e modos naturais</li>
