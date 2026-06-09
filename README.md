@@ -8,7 +8,7 @@
         Descrição 
     </h2>
     <p style="text-indent: 2em;">
-        O conteúdo neste repositório foi produzido como material de apoio para os alunos da cadeira <b>ENE0067 - SINAIS E SISTEMAS EM TEMPO CONTÍNUO</b> (SSTC) na Universidade de Brasília (UnB), da turma dos professores <b>Eduardo Stockler Tognetti</b>, <b>Flávia Maria Guerra de Sousa Aranha Oliveira</b> e <b>Lélio Ribeiro Soares Júnior</b>.
+        O conteúdo neste repositório foi produzido como material de apoio para os alunos da cadeira <b>ENE0067 - SINAIS E SISTEMAS EM TEMPO CONTÍNUO</b> (SSTC) na Universidade de Brasília (UnB), das turmas dos professores <b>Eduardo Stockler Tognetti</b>, <b>Flávia Maria Guerra de Sousa Aranha Oliveira</b> e <b>Lélio Ribeiro Soares Júnior</b>.
         <p style="text-indent: 2em;">
         Contudo, os tópicos abordados nos notebooks disponíveis são abrangentes o suficiente para que possam ser aproveitados por qualquer estudante dessa disciplina. Adotando o livro <i>Sinais e Sistemas Lineares</i> do autor <b>Bhagwandas Pannalal Lathi</b>, assim como as notas de aula do professor Eduardo Tognetti como referências principais, o objetivo dos arquivos é fornecer:
     <ul>
