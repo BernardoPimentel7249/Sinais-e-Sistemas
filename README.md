@@ -16,6 +16,9 @@
         <li>Células interativas que sirvam para resolver problemas e ilustrar ideias relacionados ao assunto discutido</li>
     </ul>
     <h2>
+        Formas de usar
+    </h2>
+    <h2>
         Notebook 1 - Análise no Domínio do Tempo
     </h2>
     <p style="text-indent: 2em;">
