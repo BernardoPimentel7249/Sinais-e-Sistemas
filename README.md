@@ -73,10 +73,18 @@
         Notebook 4 - Resposta em Frequência e Filtros
     </h2>
     <p style="text-indent: 2em;">
-        WIP
+        Os conhecimentos dos últimos notebooks são compilados na caracterização de sistemas LCIT no domínio da frequência, no 
+        contexto de <i>filtros</i>. Contempla-se:
+    <ul>
+        <li>Resposta em frequência</li>
+        <li>Diagramas de Bode</li>
+        <li>Projeto de filtros realizáveis</li>
+    </ul>
+    <p style="text-indent: 2em;">
+        Ao final, encontra-se um script que fornece a representação exata e a aproximação assintótica do diagrama de bode de uma função de transferência.
     <h2>
         Notebook 5 - Análise no Espaço de Estados
     </h2>
     <p style="text-indent: 2em;">
-        TODO
+        Protótipo: Realização em espaço de estados a partir de uma Função de Transferência G(s) ou obtém as matrizes da Forma Canônica Controlável (FCC) e Forma Canônica Observável (FCO).
 </div>
