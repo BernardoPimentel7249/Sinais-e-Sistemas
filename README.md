@@ -86,5 +86,5 @@
         Notebook 5 - Análise no Espaço de Estados
     </h2>
     <p style="text-indent: 2em;">
-        Protótipo: Realização em espaço de estados a partir de uma Função de Transferência G(s) ou obtém as matrizes da Forma Canônica Controlável (FCC) e Forma Canônica Observável (FCO).
+        Realização em espaço de estados a partir de uma Função de Transferência G(s) ou obtém as matrizes da Forma Canônica Controlável (FCC) e Forma Canônica Observável (FCO).
 </div>
