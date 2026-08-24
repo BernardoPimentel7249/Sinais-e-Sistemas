@@ -444,3 +444,139 @@ def plota_Laplace(x):
     X_s = sp.symbols('X(s)') 
     display(sp.Eq(X_s, X))
     plt.show()
+
+
+#################
+#
+#       4
+#
+#################
+
+def bode(H, ganho=1, w_l=1e4):
+    # Obtém expressão da transformada, o denominador e o numerador dela:
+    num, den = sp.fraction(H)
+    num = sp.simplify(num)
+    den = sp.simplify(den)
+
+    # Obtém polos e zeros para plotar:
+    z = sp.roots(num, s)
+    p = sp.roots(den, s)
+    zeros = list(z.keys())
+    polos = list(p.keys())
+
+    polos_unicos = []
+    polos_repetidos = []
+    for polo in polos:
+        if p[polo] > 1:
+            polos_repetidos.append(polo)
+        else:
+            polos_unicos.append(polo)
+
+    re_z, im_z = [], []
+    for zero in zeros:
+        re_z.append(float(sp.re(zero)))
+        im_z.append(float(sp.im(zero)))
+
+    re_p_u, im_p_u = [], []
+    for polo in polos_unicos:
+        for n in range(p[polo]):
+            re_p_u.append(float(sp.re(polo)))
+            im_p_u.append(float(sp.im(polo)))
+
+    re_p_r, im_p_r = [], []
+    for polo in polos_repetidos:
+        for n in range(p[polo]):
+            re_p_r.append(float(sp.re(polo)))
+            im_p_r.append(float(sp.im(polo)))
+
+    # --- DEFINIÇÃO DA ESCALA DE FREQUÊNCIA (LOGARÍTMICA) ---
+    omega_l = w_l
+    # Usamos logspace para evitar w = 0 (que resultaria em log10(0) = -inf)
+    w = np.logspace(-2, np.log10(omega_l), 5000) 
+    omega = 1j * w
+
+    # --- DIAGRAMA EXATO ---
+    H_func = sp.lambdify(s, H * ganho)
+    H_val = H_func(omega)
+
+    amp_exata = 20 * np.log10(np.abs(H_val))
+    fas_exata = np.degrees(np.angle(H_val)) # Fase em graus
+
+    # --- DIAGRAMA ASSINTÓTICO (MANUAL) ---
+    # 1. Ganho em forma de Bode K_bode = lim_{s->0} s^(-N) * H(s)
+    # Calculamos a contribuição inicial de ganho contínuo
+    H_0 = float(sp.re((H * ganho).subs(s, 0))) if (H * ganho).subs(s, 0) != 0 else float(ganho)
+    K_dB = 20 * np.log10(abs(H_0)) if H_0 != 0 else 0.0
+
+    amp_assint = np.full_like(w, K_dB, dtype=float)
+    fas_assint = np.full_like(w, 0.0 if H_0 >= 0 else -180.0, dtype=float)
+
+    # Consolidação de polos (únicos e repetidos)
+    todos_polos_re = re_p_u + re_p_r
+    todos_polos_im = im_p_u + im_p_r
+
+    # Contribuição dos Zeros
+    for r, i in zip(re_z, im_z):
+        if r == 0 and i == 0:  # Zero na origem
+            amp_assint += 20 * np.log10(w)
+            fas_assint += 90.0
+        elif i == 0:  # Zero real de 1ª ordem
+            w_c = abs(r)
+            amp_assint += np.where(w >= w_c, 20 * np.log10(w / w_c), 0.0)
+            w1, w2 = w_c / 10.0, 10.0 * w_c
+            m = (w >= w1) & (w <= w2)
+            m_hi = w > w2
+            fas_assint[m] += 45.0 * np.log10(w[m] / w1)
+            fas_assint[m_hi] += 90.0
+        else:  # Zero complexo de 2ª ordem (agrupado em par)
+            w_n = np.sqrt(r**2 + i**2)
+            amp_assint += np.where(w >= w_n, 40 * np.log10(w / w_n), 0.0)
+            fas_assint += np.where(w >= w_n, 180.0, 0.0)
+
+    # Contribuição dos Polos
+    idx = 0
+    N_p = len(todos_polos_re)
+    while idx < N_p:
+        r, i = todos_polos_re[idx], todos_polos_im[idx]
+        
+        if r == 0 and i == 0:  # Polo na origem
+            amp_assint -= 20 * np.log10(w)
+            fas_assint -= 90.0
+            idx += 1
+        elif i == 0:  # Polo real de 1ª ordem
+            w_c = abs(r)
+            amp_assint -= np.where(w >= w_c, 20 * np.log10(w / w_c), 0.0)
+            w1, w2 = w_c / 10.0, 10.0 * w_c
+            m = (w >= w1) & (w <= w2)
+            m_hi = w > w2
+            fas_assint[m] -= 45.0 * np.log10(w[m] / w1)
+            fas_assint[m_hi] -= 90.0
+            idx += 1
+        else:  # Polo complexo de 2ª ordem (par conjugado)
+            w_n = np.sqrt(r**2 + i**2)
+            amp_assint -= np.where(w >= w_n, 40 * np.log10(w / w_n), 0.0)
+            fas_assint -= np.where(w >= w_n, 180.0, 0.0)
+            idx += 2  # Pula o conjugado do mesmo par
+
+    # --- PLOT COMPARATIVO ---
+    fig, axs = plt.subplots(2, 1, figsize=(9, 7))
+
+    # Espectro de Amplitude
+    axs[0].semilogx(w, amp_exata, label='Exato (Curva Real)', color='tab:blue', linewidth=2)
+    axs[0].semilogx(w, amp_assint, '--r', label='Esboço Manual (Assintótico)', linewidth=1.8)
+    axs[0].set_ylabel(r"$|H(j\omega)|_{dB}$")
+    axs[0].set_title("Diagrama de Bode - Espectro de Amplitude")
+    axs[0].grid(True, which="both", linestyle="--", alpha=0.6)
+    axs[0].legend()
+
+    # Espectro de Fase
+    axs[1].semilogx(w, fas_exata, label='Exato (Curva Real)', color='tab:blue', linewidth=2)
+    axs[1].semilogx(w, fas_assint, '--r', label='Esboço Manual (Assintótico)', linewidth=1.8)
+    axs[1].set_xlabel(r"Frequência $\omega$ (rad/s)")
+    axs[1].set_ylabel(r"Fase $\angle H(j\omega)$ (graus)")
+    axs[1].set_title("Diagrama de Bode - Espectro de Fase")
+    axs[1].grid(True, which="both", linestyle="--", alpha=0.6)
+    axs[1].legend()
+
+    plt.tight_layout()
+    plt.show()
